@@ -1,26 +1,135 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #010314;
+  --foreground: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', 'Plus Jakarta Sans';
+}
+
+@keyframes bounceY {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bounce-y {
+  animation: bounceY 5s ease-in-out infinite;
+}
+
+@keyframes ripple-pulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  30% {
+    opacity: 0.4;
+  }
+  60% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(4); /* Larger than before */
+    opacity: 0;
+  }
+}
+
+/* Common animation with staggered delays */
+.ripple-1 {
+  animation: ripple-pulse 8s ease-out infinite;
+  animation-delay: 0s;
+}
+.ripple-2 {
+  animation: ripple-pulse 8s ease-out infinite;
+  animation-delay: 2s;
+}
+.ripple-3 {
+  animation: ripple-pulse 8s ease-out infinite;
+  animation-delay: 4s;
+}
+.ripple-4 {
+  animation: ripple-pulse 8s ease-out infinite;
+  animation-delay: 6s;
+}
+.ripple-5 {
+  animation: ripple-pulse 8s ease-out infinite;
+  animation-delay: 8s;
+}
+
+@keyframes slideLeftRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50px); /* Adjust distance as needed */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.slow-spin {
+  animation: slow-spin 10s linear infinite;
+}
+
+::selection {
+  background-color: #E32058; /* your custom highlight color */
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+@keyframes wobble {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+}
+
+.animate-wobble {
+  animation: wobble 1s ease-in-out infinite;
+}
+
+/* Add these styles to your globals.css or main stylesheet */
+.navbar-container {
+  position: fixed;
+  z-index: 1000;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1010;
+}
+
+.mobile-menu-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: 100vh;
+  z-index: 1020;
 }
